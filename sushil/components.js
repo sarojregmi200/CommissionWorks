@@ -1,14 +1,5 @@
 // for the ease of transfer and understandability all the components are present in this file
-import {
-  Button,
-  Image,
-  ScrollView,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  TouchableWithoutFeedbackBase,
-  View,
-} from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { colors, dashboardStyles } from "./styles";
 import Icon from "./assets/utilities/Icon";
 
@@ -124,7 +115,7 @@ import { dailySummaryStyles } from "./styles";
 
 export const DailySummarySection = ({ items }) => {
   return (
-    <ScrollView style={dailySummaryStyles.mainContainer}>
+    <View style={dailySummaryStyles.mainContainer}>
       <View style={dailySummaryStyles.titleContainer}>
         <Icon
           name={"daily"}
@@ -155,7 +146,7 @@ export const DailySummarySection = ({ items }) => {
             </View>
           ))}
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -170,7 +161,56 @@ export const CustomButton = ({ title, onPress, bg, color }) => {
       style={[buttonStyles.mainButton, { backgroundColor: bg }]}
       onPress={onPress}
     >
-      <Text style={{ color: color }}>{title}</Text>
+      <Text style={[{ color: color }, buttonStyles.title]}>{title}</Text>
     </TouchableOpacity>
+  );
+};
+
+// Advanced Reports navigation with buttons Section
+// @params title, onPress, bg
+//
+export const AdvancedReportBtn = ({ title, onPress, bg, icon }) => {
+  return (
+    <TouchableOpacity
+      style={[reportStyles.mainButton, { backgroundColor: bg }]}
+      onPress={onPress}
+    >
+      <View style={reportStyles.iconContainer}>
+        <Icon name={icon} height={20} width={20} color={colors["gray-400"]} />
+      </View>
+      <Text style={[{ color: bg }, reportStyles.title]}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
+
+import { reportStyles } from "./styles";
+// Advance Reports Section
+// @params items, onPress
+
+export const AdvancedReports = ({ items }) => {
+  return (
+    <View style={reportStyles.mainContainer}>
+      <View style={reportStyles.titleContainer}>
+        <Icon
+          name={"daily"}
+          height={25}
+          width={25}
+          color={colors["primary-light"]}
+        />
+        <Text style={reportStyles.title}>Advanced Reports</Text>
+      </View>
+
+      <View style={reportStyles.itemsContainer}>
+        {items?.length > 0 &&
+          items.map((item, index) => (
+            <AdvancedReportBtn
+              key={index}
+              title={item.title}
+              onPress={item.onPress}
+              icon={item.icon}
+            />
+          ))}
+      </View>
+    </View>
   );
 };

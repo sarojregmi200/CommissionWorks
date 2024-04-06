@@ -41,7 +41,6 @@ export const colors = {
 export const dashboardStyles = StyleSheet.create({
   mainContainer: {
     width: Dimensions.get("screen").width - 10,
-    height: "auto",
     padding: 10,
     paddingVertical: 20,
     backgroundColor: colors["gray-50"],
@@ -181,7 +180,6 @@ export const dailySummaryStyles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
     paddingHorizontal: 10,
     columnGap: 10,
   },
@@ -192,8 +190,7 @@ export const dailySummaryStyles = StyleSheet.create({
   },
   mainContainer: {
     width: "100%",
-    height: "auto",
-    marginTop: 20,
+    marginTop: 10,
   },
   itemsContainer: {
     flexDirection: "row",
@@ -235,11 +232,16 @@ export const buttonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 10,
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: colors["gray-50"],
+    fontWeight: "medium",
+  },
+});
+
+export const reportStyles = StyleSheet.create({
+  mainContainer: {
+    marginTop: 10,
+    padding: 10,
   },
 });
