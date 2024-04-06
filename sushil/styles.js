@@ -2,6 +2,7 @@
 //
 
 import { Dimensions, StyleSheet } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 // generate using the tailwind css
 export const colors = {
@@ -33,6 +34,8 @@ export const colors = {
   "green-700": "#047857",
   "green-800": "#065f46",
   "green-900": "#064e3b",
+  primary: "#603CC7",
+  "primary-light": "#603cc775",
 };
 
 export const dashboardStyles = StyleSheet.create({
@@ -44,6 +47,7 @@ export const dashboardStyles = StyleSheet.create({
     backgroundColor: colors["gray-50"],
     borderRadius: 10,
     marginHorizontal: 5,
+    elevation: 10,
   },
   firstRow: {
     display: "flex",
@@ -71,15 +75,13 @@ export const dashboardStyles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 5,
     backgroundColor: colors["gray-50"],
-    borderColor: colors["green-300"],
+    borderColor: colors["primary-light"],
     borderWidth: 1,
-    outline: 3,
-    outlineColor: colors["gray-100"],
   },
   speed: {
     fontSize: 16,
     fontWeight: "bold",
-    color: colors["green-500"],
+    color: colors["primary"],
   },
   speedUnit: {
     fontSize: 10,
@@ -94,7 +96,7 @@ export const dashboardStyles = StyleSheet.create({
     height: 10,
     width: 10,
     borderRadius: 50,
-    backgroundColor: colors["green-500"],
+    backgroundColor: colors["green-600"],
     marginLeft: 5,
   },
   userWithStatus: {
@@ -107,19 +109,20 @@ export const dashboardStyles = StyleSheet.create({
     color: colors["gray-600"],
   },
   location: {
-    color: colors["gray-500"],
+    color: colors["gray-400"],
   },
   expireDate: {
-    color: colors["gray-500"],
+    color: colors["gray-400"],
   },
   charge: {
     flexDirection: "row",
     alignItems: "center",
+    marginTop: 5,
   },
   chargeNumber: {
     fontSize: 16,
     fontWeight: "bold",
-    color: colors["green-500"],
+    color: colors["primary"],
   },
   statusContainer: {
     display: "flex",
@@ -171,5 +174,72 @@ export const dashboardStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: colors["gray-600"],
+  },
+});
+
+export const dailySummaryStyles = StyleSheet.create({
+  titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    columnGap: 10,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: colors["gray-600"],
+  },
+  mainContainer: {
+    width: "100%",
+    height: "auto",
+    marginTop: 20,
+  },
+  itemsContainer: {
+    flexDirection: "row",
+    padding: 10,
+    flexWrap: "wrap",
+    width: "100%",
+    paddingVertical: 20,
+    gap: 5,
+  },
+  itemContainer: {
+    width: (Dimensions.get("screen").width - 25) / 2,
+    padding: 10,
+    backgroundColor: colors["gray-50"],
+    borderRadius: 10,
+  },
+  itemTitleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  itemTitle: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-400"],
+  },
+  itemValue: {
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: "bold",
+    color: colors["gray-600"],
+  },
+});
+
+export const buttonStyles = StyleSheet.create({
+  mainButton: {
+    flex: 1,
+    height: 50,
+    backgroundColor: colors["primary"],
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: colors["gray-50"],
   },
 });
