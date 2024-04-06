@@ -244,4 +244,209 @@ export const reportStyles = StyleSheet.create({
     marginTop: 10,
     padding: 10,
   },
+  titleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: colors["gray-600"],
+    marginLeft: 10,
+  },
+  itemsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 5,
+    marginTop: 10,
+  },
+  mainButton: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    width: (Dimensions.get("screen").width - 25) / 2,
+    backgroundColor: colors["gray-100"],
+    borderRadius: 10,
+    padding: 10,
+    height: 50,
+  },
+  itemTitle: {
+    fontSize: 14,
+    fontWeight: "400",
+    color: colors["gray-600"],
+    marginLeft: 10,
+  },
+});
+
+export const tripStyles = StyleSheet.create({
+  mainContainer: {
+    width: Dimensions.get("screen").width - 10,
+    backgroundColor: "white",
+    marginTop: 10,
+    borderRadius: 10,
+    marginHorizontal: 5,
+    elevation: 10,
+  },
+
+  firstRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 20,
+    borderBottomWidth: 1,
+    borderColor: colors["gray-300"],
+  },
+  firstCol: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 100,
+    width: 20,
+    position: "relative",
+    paddingVertical: 10,
+  },
+
+  greenDot: {
+    height: 15,
+    width: 15,
+    borderRadius: 50,
+    backgroundColor: colors["green-600"],
+    position: "absolute",
+    top: 7.5,
+  },
+  redDot: {
+    height: 15,
+    width: 15,
+    borderRadius: 50,
+    backgroundColor: "red",
+    position: "absolute",
+    bottom: 7.5,
+  },
+  lineInBetween: {
+    height: "100%",
+    width: 2,
+    position: "absolute",
+    backgroundColor: colors["gray-300"],
+  },
+  secondCol: {
+    flexDirection: "column",
+    gap: 20,
+    marginLeft: 20,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: colors["gray-600"],
+  },
+  time: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-500"],
+  },
+
+  location: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-500"],
+  },
+  locationWithIcon: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 5,
+    gap: 2,
+  },
+  secondRow: {
+    padding: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  secondRowStatus: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  statusWithIcon: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 2.5,
+  },
+  secondRowStatusTitle: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-500"],
+  },
+
+  secondRowStatusValue: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: colors["gray-600"],
+  },
+});
+
+export const infoStyles = StyleSheet.create({
+  driverInfo: {
+    marginLeft: 10,
+  },
+  mainContainer: {
+    width: Dimensions.get("screen").width - 10,
+    backgroundColor: "white",
+    marginTop: 10,
+    borderRadius: 10,
+    marginHorizontal: 5,
+    elevation: 10,
+    padding: 20,
+  },
+  vehichleInfoContainer: {
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderColor: colors["gray-300"],
+    marginTop: 10,
+  },
+  vehicleInfo: {
+    flexDirection: "row",
+    gap: 4,
+    marginTop: 5,
+  },
+  vehicleInfoTitleText: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-500"],
+  },
+  vehicleInfoValue: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-500"],
+    flex: 1,
+    textAlign: "right",
+  },
+
+  vehicleInfoTitle: {
+    flexDirection: "row",
+    gap: 4,
+    flex: 1,
+  },
+
+  otherInfoContainer: {
+    gap: 4,
+    marginTop: 5,
+  },
+  otherInfo: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 5,
+  },
+  otherInfoTitle: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-500"],
+    width: "50%",
+  },
+
+  otherInfoValue: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: colors["gray-500"],
+  },
 });

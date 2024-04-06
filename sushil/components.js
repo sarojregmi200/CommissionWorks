@@ -11,6 +11,7 @@ export const MainDashboard = ({
   speed,
   vehicleInfo,
   status,
+  userOnline,
 }) => {
   return (
     <View style={dashboardStyles.mainContainer}>
@@ -31,7 +32,7 @@ export const MainDashboard = ({
         <View style={dashboardStyles.driverInfo}>
           <View style={dashboardStyles.userWithStatus}>
             <Text style={dashboardStyles.userName}>{userName}</Text>
-            <View style={dashboardStyles.activeStatus}></View>
+            {userOnline && <View style={dashboardStyles.activeStatus}></View>}
           </View>
           <Text style={dashboardStyles.location}>{location}</Text>
           <Text style={dashboardStyles.expireDate}>{expireDate}</Text>
@@ -172,13 +173,11 @@ export const CustomButton = ({ title, onPress, bg, color }) => {
 export const AdvancedReportBtn = ({ title, onPress, bg, icon }) => {
   return (
     <TouchableOpacity
-      style={[reportStyles.mainButton, { backgroundColor: bg }]}
+      style={[reportStyles.mainButton, bg && { backgroundColor: bg }]}
       onPress={onPress}
     >
-      <View style={reportStyles.iconContainer}>
-        <Icon name={icon} height={20} width={20} color={colors["gray-400"]} />
-      </View>
-      <Text style={[{ color: bg }, reportStyles.title]}>{title}</Text>
+      <Icon name={icon} height={20} width={20} color={colors["primary"]} />
+      <Text style={[{ color: bg }, reportStyles.itemTitle]}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -192,7 +191,7 @@ export const AdvancedReports = ({ items }) => {
     <View style={reportStyles.mainContainer}>
       <View style={reportStyles.titleContainer}>
         <Icon
-          name={"daily"}
+          name={"advanced"}
           height={25}
           width={25}
           color={colors["primary-light"]}
@@ -208,8 +207,171 @@ export const AdvancedReports = ({ items }) => {
               title={item.title}
               onPress={item.onPress}
               icon={item.icon}
+              bg={item.bg}
             />
           ))}
+      </View>
+    </View>
+  );
+};
+
+import { infoStyles } from "./styles";
+export const InfoScreen = ({
+  userName,
+  userOnline,
+  charge,
+  location,
+  vehicleInfo,
+  otherInfo,
+  expireDate,
+}) => {
+  return (
+    <View style={infoStyles.mainContainer}>
+      <View style={dashboardStyles.firstRow}>
+        <View style={dashboardStyles.userAvatar}>
+          <Image
+            source={require("./assets/svg/bikeIcon.png")}
+            style={{ maxHeight: 50, maxWidth: 50 }}
+          />
+
+          {/* It is going to show the charge */}
+          <View style={dashboardStyles.chargeBorder}></View>
+        </View>
+        <View style={infoStyles.driverInfo}>
+          <View style={dashboardStyles.userWithStatus}>
+            <Text style={dashboardStyles.userName}>{userName}</Text>
+            {userOnline && <View style={dashboardStyles.activeStatus}></View>}
+          </View>
+          <Text style={dashboardStyles.location}>{location}</Text>
+          <Text style={dashboardStyles.expireDate}>{expireDate}</Text>
+          <View style={dashboardStyles.charge}>
+            <Icon
+              name={"thunder"}
+              width={20}
+              height={20}
+              color={colors["primary"]}
+            />
+            <Text style={dashboardStyles.chargeNumber}>{charge}%</Text>
+          </View>
+        </View>
+      </View>
+      <View style={infoStyles.vehichleInfoContainer}>
+        {vehicleInfo?.length > 0 &&
+          vehicleInfo.map((info, index) => (
+            <View style={infoStyles.vehicleInfo} key={index}>
+              <View style={infoStyles.vehicleInfoTitle}>
+                <Icon
+                  name={info.icon}
+                  height={20}
+                  width={20}
+                  color={colors["primary"]}
+                />
+                <Text style={infoStyles.vehicleInfoTitleText}>{info.name}</Text>
+              </View>
+              <Text style={infoStyles.vehicleInfoValue}>{info.value}</Text>
+            </View>
+          ))}
+      </View>
+      <View style={infoStyles.otherInfoContainer}>
+        {otherInfo?.length > 0 &&
+          otherInfo.map((info, index) => (
+            <View style={infoStyles.otherInfo} key={index}>
+              <Text style={infoStyles.otherInfoTitle}>{info.title}</Text>
+              <Text style={infoStyles.otherInfoValue}>{info.value}</Text>
+            </View>
+          ))}
+      </View>
+    </View>
+  );
+};
+
+import { tripStyles } from "./styles";
+
+export const TripsCard = ({
+  startTime,
+  startLocation,
+  endTime,
+  endLocation,
+  distance,
+  duration,
+  maxSpeed,
+}) => {
+  return (
+    <View style={tripStyles.mainContainer}>
+      <View style={tripStyles.firstRow}>
+        <View style={tripStyles.firstCol}>
+          <View style={tripStyles.lineInBetween}></View>
+          <View style={tripStyles.redDot}></View>
+          <View style={tripStyles.greenDot}></View>
+        </View>
+        <View style={tripStyles.secondCol}>
+          <View style={tripStyles.startTrip}>
+            <Text style={tripStyles.title}>Start Time</Text>
+            <Text style={tripStyles.time}>{startTime}</Text>
+            <View style={tripStyles.locationWithIcon}>
+              <Icon
+                name={"gps"}
+                height={15}
+                width={15}
+                color={colors["gray-500"]}
+              />
+              <Text style={tripStyles.location}>{startLocation}</Text>
+            </View>
+          </View>
+          <View style={tripStyles.endTrip}>
+            <Text style={tripStyles.title}>End Time</Text>
+            <Text style={tripStyles.time}>{endTime}</Text>
+            <View style={tripStyles.locationWithIcon}>
+              <Icon
+                name={"gps"}
+                height={15}
+                width={15}
+                color={colors["gray-500"]}
+              />
+              <Text style={tripStyles.location}>{endLocation}</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+
+      <View style={tripStyles.secondRow}>
+        <View style={tripStyles.secondRowStatus}>
+          <View style={tripStyles.statusWithIcon}>
+            <Text style={tripStyles.secondRowStatusTitle}>Distance</Text>
+            <Icon
+              name={"distance"}
+              height={20}
+              width={20}
+              color={colors["gray-500"]}
+            />
+          </View>
+          <Text style={tripStyles.secondRowStatusValue}>{distance}</Text>
+        </View>
+
+        <View style={tripStyles.secondRowStatus}>
+          <View style={tripStyles.statusWithIcon}>
+            <Text style={tripStyles.secondRowStatusTitle}>Duration</Text>
+            <Icon
+              name={"clock"}
+              height={20}
+              width={20}
+              color={colors["gray-400"]}
+            />
+          </View>
+          <Text style={tripStyles.secondRowStatusValue}>{duration}</Text>
+        </View>
+        <View style={tripStyles.secondRowStatus}>
+          <View style={tripStyles.statusWithIcon}>
+            <Text style={tripStyles.secondRowStatusTitle}>Max Speed</Text>
+            <Icon
+              name={"topSpeed"}
+              height={20}
+              width={20}
+              color={colors["gray-400"]}
+            />
+          </View>
+          <Text style={tripStyles.secondRowStatusValue}>{maxSpeed}</Text>
+        </View>
       </View>
     </View>
   );
