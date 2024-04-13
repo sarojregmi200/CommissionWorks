@@ -6,7 +6,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 // generate using the tailwind css
 export const colors = {
-  "gray-50": "#f9fafb",
+  "gray-50": "#f9fafb", // selected gray color
   "gray-100": "#f3f4f6",
   "gray-200": "#e5e7eb",
   "gray-300": "#d1d5db",
@@ -229,7 +229,7 @@ export const buttonStyles = StyleSheet.create({
     flex: 1,
     height: 50,
     backgroundColor: colors["primary"],
-    borderRadius: 10,
+    borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -362,14 +362,14 @@ export const tripStyles = StyleSheet.create({
   },
   secondRowStatus: {
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "left",
     justifyContent: "center",
   },
 
   statusWithIcon: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 2.5,
+    gap: 3,
   },
   secondRowStatusTitle: {
     fontSize: 14,

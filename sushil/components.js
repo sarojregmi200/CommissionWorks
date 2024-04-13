@@ -1,7 +1,8 @@
 // for the ease of transfer and understandability all the components are present in this file
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { colors, dashboardStyles } from "./styles";
-import Icon from "./assets/utilities/Icon";
+// import Icon from "./assets/utilities/Icon";
+import { Icon } from "@rneui/themed";
 
 export const MainDashboard = ({
   userName,
@@ -38,9 +39,10 @@ export const MainDashboard = ({
           <Text style={dashboardStyles.expireDate}>{expireDate}</Text>
           <View style={dashboardStyles.charge}>
             <Icon
-              name={"thunder"}
-              width={20}
-              height={20}
+              name="bolt"
+              solid
+              type="font-awesome-5"
+              size={15}
               color={colors["primary"]}
             />
             <Text style={dashboardStyles.chargeNumber}>{charge}%</Text>
@@ -54,8 +56,12 @@ export const MainDashboard = ({
               <View style={dashboardStyles.circleIcon}>
                 <Icon
                   name={info.icon}
-                  height={20}
-                  width={20}
+                  type="font-awesome-5"
+                  iconStyle={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  size={15}
                   color={info.active ? colors["green-600"] : colors["gray-400"]}
                 />
               </View>
@@ -119,9 +125,13 @@ export const DailySummarySection = ({ items }) => {
     <View style={dailySummaryStyles.mainContainer}>
       <View style={dailySummaryStyles.titleContainer}>
         <Icon
-          name={"daily"}
-          height={25}
-          width={25}
+          name={"chart-bar"}
+          type="font-awesome-5"
+          iconStyle={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          size={15}
           color={colors["primary-light"]}
         />
         <Text style={dailySummaryStyles.title}>Daily Summary</Text>
@@ -136,8 +146,12 @@ export const DailySummarySection = ({ items }) => {
                 {item?.icon && (
                   <Icon
                     name={item.icon}
-                    height={20}
-                    width={20}
+                    type="material-community"
+                    iconStyle={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    size={15}
                     color={colors["gray-400"]}
                   />
                 )}
@@ -176,7 +190,16 @@ export const AdvancedReportBtn = ({ title, onPress, bg, icon }) => {
       style={[reportStyles.mainButton, bg && { backgroundColor: bg }]}
       onPress={onPress}
     >
-      <Icon name={icon} height={20} width={20} color={colors["primary"]} />
+      <Icon
+        name={icon}
+        type="material-community"
+        iconStyle={{
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        size={15}
+        color={colors["primary"]}
+      />
       <Text style={[{ color: bg }, reportStyles.itemTitle]}>{title}</Text>
     </TouchableOpacity>
   );
@@ -191,10 +214,14 @@ export const AdvancedReports = ({ items }) => {
     <View style={reportStyles.mainContainer}>
       <View style={reportStyles.titleContainer}>
         <Icon
-          name={"advanced"}
-          height={25}
-          width={25}
-          color={colors["primary-light"]}
+          name={"cog-sync"}
+          type="material-community"
+          iconStyle={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          size={15}
+          or={colors["primary-light"]}
         />
         <Text style={reportStyles.title}>Advanced Reports</Text>
       </View>
@@ -246,9 +273,13 @@ export const InfoScreen = ({
           <Text style={dashboardStyles.expireDate}>{expireDate}</Text>
           <View style={dashboardStyles.charge}>
             <Icon
-              name={"thunder"}
-              width={20}
-              height={20}
+              type="font-awesome-5"
+              iconStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              name="bolt"
+              size={15}
               color={colors["primary"]}
             />
             <Text style={dashboardStyles.chargeNumber}>{charge}%</Text>
@@ -262,8 +293,12 @@ export const InfoScreen = ({
               <View style={infoStyles.vehicleInfoTitle}>
                 <Icon
                   name={info.icon}
-                  height={20}
-                  width={20}
+                  type="material-community"
+                  iconStyle={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  size={15}
                   color={colors["primary"]}
                 />
                 <Text style={infoStyles.vehicleInfoTitleText}>{info.name}</Text>
@@ -310,9 +345,13 @@ export const TripsCard = ({
             <Text style={tripStyles.time}>{startTime}</Text>
             <View style={tripStyles.locationWithIcon}>
               <Icon
-                name={"gps"}
-                height={15}
-                width={15}
+                name={"map-marker-radius-outline"}
+                type="material-community"
+                iconStyle={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                size={15}
                 color={colors["gray-500"]}
               />
               <Text style={tripStyles.location}>{startLocation}</Text>
@@ -323,9 +362,13 @@ export const TripsCard = ({
             <Text style={tripStyles.time}>{endTime}</Text>
             <View style={tripStyles.locationWithIcon}>
               <Icon
-                name={"gps"}
-                height={15}
-                width={15}
+                name={"map-marker-check"}
+                type="material-community"
+                iconStyle={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                size={15}
                 color={colors["gray-500"]}
               />
               <Text style={tripStyles.location}>{endLocation}</Text>
@@ -337,38 +380,50 @@ export const TripsCard = ({
       <View style={tripStyles.secondRow}>
         <View style={tripStyles.secondRowStatus}>
           <View style={tripStyles.statusWithIcon}>
-            <Text style={tripStyles.secondRowStatusTitle}>Distance</Text>
             <Icon
-              name={"distance"}
-              height={20}
-              width={20}
-              color={colors["gray-500"]}
+              name={"map-marker-distance"}
+              type="material-community"
+              iconStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              size={15}
+              color={colors["primary"]}
             />
+            <Text style={tripStyles.secondRowStatusTitle}>Distance</Text>
           </View>
           <Text style={tripStyles.secondRowStatusValue}>{distance}</Text>
         </View>
 
         <View style={tripStyles.secondRowStatus}>
           <View style={tripStyles.statusWithIcon}>
-            <Text style={tripStyles.secondRowStatusTitle}>Duration</Text>
             <Icon
-              name={"clock"}
-              height={20}
-              width={20}
-              color={colors["gray-400"]}
+              name={"map-clock-outline"}
+              type="material-community"
+              iconStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              size={15}
+              color={colors["primary"]}
             />
+            <Text style={tripStyles.secondRowStatusTitle}>Duration</Text>
           </View>
           <Text style={tripStyles.secondRowStatusValue}>{duration}</Text>
         </View>
         <View style={tripStyles.secondRowStatus}>
           <View style={tripStyles.statusWithIcon}>
-            <Text style={tripStyles.secondRowStatusTitle}>Max Speed</Text>
             <Icon
-              name={"topSpeed"}
-              height={20}
-              width={20}
-              color={colors["gray-400"]}
+              name={"speedometer"}
+              type="material-community"
+              iconStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              size={15}
+              color={colors["primary"]}
             />
+            <Text style={tripStyles.secondRowStatusTitle}>Max Speed</Text>
           </View>
           <Text style={tripStyles.secondRowStatusValue}>{maxSpeed}</Text>
         </View>
